@@ -55,9 +55,8 @@ function loop() {
     function finish_process() {
         return new Promise((resolve, reject) => {
             setTimeout(function () {
-                console.log('Closed tab successfully!');
                 resolve();
-            }, 8000);
+            }, 4000);
         }).catch((error) => {
             console.log('Unexpected error occured: ' + error);
         })
@@ -72,17 +71,17 @@ function loop() {
 }
 
 var number = 0;
+var intervalId = setInterval(twentySeconds, 20000);
+
 function twentySeconds() {
-    if (number <= 10) {
+    if (number <= 1) { //(number <= x), where x is the number of times the program should execute - 1
         loop();
         number++;
         console.log('Try number: ' + number);
     }
-};
-
-if (number > 10) {
-    clearInterval(twentySeconds);
+    else {
+        clearInterval(intervalId)
+        console.log('Closing program!')
+        driver.quit(); //close browser and quit program
+    }
 }
-
-setInterval(twentySeconds, 20000);
-
