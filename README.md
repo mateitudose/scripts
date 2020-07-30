@@ -1,2 +1,2 @@
-# bitcoinProjects
-Small repo with code that uses Bitcoin  
+# Some scripts
+Small repo with scripts used in other projects
